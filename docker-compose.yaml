@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+  turn-server:
+    build:
+      context: ./turn-server
+      dockerfile: Dockerfile
+    expose:
+      - 3478
+  mongodb:
+    image: mongo:4.2-bionic
+    volumes:
+      - type: bind
+        source: ./data/mongodb
+        target: /data
+      - type: bind
+        source: ./logs/mongodb
+        target: /logs/
+    command: mongod --dbpath /data --logpath /logs/mongod.log
+  nginx:
+    image: nginx:1.18-alpine
+    expose:
+      - 443
+      - 80
+    links:
+      - "katchup-server"
+  katchup-server:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    links:
+      - "mongodb"
