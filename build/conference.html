@@ -49,6 +49,7 @@
             height: 100%;
             /* width: 10%; */
             width: 200px;
+            overflow:auto;
         }
 
         div#footerPanel {
@@ -92,12 +93,18 @@
 
     </div>
     <div id="rightPanel">
+        <div style="border:1px solid red">
+            <video autoplay muted id="myVideo"></video>
+        </div>
         <input type="text" id="txtSearch" placeholder="Search For User">
     </div>
     <div id="footerPanel">
-        <a class="btn btn-warning" href="#" id="btnMute"><i class="fa fa-microphone-slash"></i> Mute </a>
-        <a class="btn btn-warning" href="#"><i class="fa fa-video-slash"></i> Video </a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-power-off"></i> Disconnect</a>
+        <div>
+            <span id="txtFlashMessages"></span>
+        </div>
+        <a class="btn btn-warning" href="#" id="btnMute"><i class="fa fa-microphone"></i> Mute </a>
+        <a class="btn btn-warning" href="#" id="btnVideo"><i class="fa fa-video"></i> Video </a>
+        <a href="#" class="btn btn-danger" id="btnDisconnect"><i class="fa fa-power-off"></i> Disconnect</a>
     </div>
 
     <div>
@@ -114,7 +121,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="txtParticipantName">Your Name :</label>
-                            <input type="text" class="form-control"  name="Name" id="txtParticipantName" value="Sachin 1">
+                            <input type="text" class="form-control"  name="Name" id="txtParticipantName" value="Sachin New">
                         </div>
                         <div class="form-group">
                             <label for="txtMeetingId">Meeting Id :</label>

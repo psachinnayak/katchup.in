@@ -90,9 +90,9 @@ class ConferenceFramework extends Emitter {
 
 
     findById(id) {
-        this.participants.forEach((p)=>{
-            console.log("Participant is ", p.id);
-        })
+        // this.participants.forEach((p)=>{
+        //     console.log("Participant is ", p.id);
+        // })
         // console.log()
         return this.participants.find((p) => (id == p.id))
     }
@@ -112,6 +112,11 @@ class ConferenceFramework extends Emitter {
 
         this.renderParticipant(participant);
         this.raise("participant-added", { participant });
+    }
+
+    removeParticipant(participant){
+        this.raise("participant-removed", { participant });
+        delete this.participants[participant.clientId];
     }
 
     raise(event, eventParams) {
